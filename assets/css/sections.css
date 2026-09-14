@@ -11,6 +11,47 @@
   --ai-fg: var(--ink);
 }
 
+/* --- Hero motion clip ------------------------------------------------------- */
+.hero__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.hero--video .hero__slide, .hero--video .hero__slide img { animation: none; }
+.hero--video .hero__slide:not(:first-child), .hero--video .hero__caption { display: none; }
+.hero__motion { position: absolute; right: clamp(1.1rem, 4vw, 2.5rem); bottom: clamp(1.4rem, 4vw, 2.5rem); z-index: 2; display: flex; align-items: center; gap: .75rem; }
+.hero__motion-note { color: rgba(255,255,255,.78); font-family: var(--font-label); font-size: var(--t-micro); letter-spacing: var(--tracking-label); text-transform: uppercase; display: none; }
+@media (min-width: 1100px) { .hero__motion-note { display: block; } }
+.hero__motion-btn { display: inline-flex; align-items: center; gap: .5rem; padding: .55rem .9rem; border-radius: 999px; border: 1px solid rgba(255,255,255,.4); background: rgba(0,0,0,.35); color: #fff; font: var(--weight-strong) var(--t-micro)/1 var(--font-label); letter-spacing: var(--tracking-label); text-transform: uppercase; cursor: pointer; backdrop-filter: blur(6px); }
+.hero__motion-btn:hover { background: rgba(0,0,0,.55); }
+@media (max-width: 979px) { .hero__motion { bottom: auto; top: 5.6rem; } }
+
+/* --- Explore a finished project (photo markers) ----------------------------- */
+.explore { display: grid; gap: clamp(2rem, 5vw, 4rem); align-items: center; }
+@media (min-width: 960px) { .explore { grid-template-columns: 1.2fr .8fr; } }
+.explore__stage { position: relative; margin: 0; border-radius: var(--radius-img); overflow: hidden; box-shadow: var(--shadow-l); }
+.explore__stage img { width: 100%; height: auto; display: block; }
+.spot { position: absolute; transform: translate(-50%, -50%); width: 2.5rem; height: 2.5rem; border-radius: 50%; border: 2px solid #fff; background: var(--accent); color: var(--accent-ink); font: 700 .9rem/1 var(--font-label); display: grid; place-items: center; cursor: pointer; animation: spotPulse 2.4s ease-out infinite; }
+.spot:hover, .spot[aria-pressed="true"] { background: #fff; color: #111; }
+.spot:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+@keyframes spotPulse { 0% { box-shadow: 0 0 0 0 rgba(255,255,255,.6); } 70%, 100% { box-shadow: 0 0 0 14px rgba(255,255,255,0); } }
+@media (prefers-reduced-motion: reduce) { .spot { animation: none; } }
+.explore__list { list-style: none; padding: 0; margin: 1.5rem 0 0; display: grid; gap: .2rem; }
+.explore__item { border-radius: var(--radius-sm); }
+.explore__item[data-active] { background: var(--bg-2); }
+.explore__btn { all: unset; box-sizing: border-box; width: 100%; display: grid; grid-template-columns: 2rem 1fr; align-items: center; gap: .85rem; padding: .8rem .7rem; border-radius: var(--radius-sm); cursor: pointer; }
+.explore__btn:hover .explore__t { text-decoration: underline; text-underline-offset: 3px; }
+.explore__btn:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.explore__n { width: 1.8rem; height: 1.8rem; border-radius: 50%; background: var(--accent); color: var(--accent-ink); display: grid; place-items: center; font: 700 .8rem/1 var(--font-label); }
+.explore__t { font-weight: var(--weight-strong); }
+.explore__b { padding: 0 .7rem .9rem 3.55rem; color: var(--ink-2); font-size: var(--t-small); }
+.explore__b a { color: var(--accent-text); font-weight: var(--weight-strong); text-decoration: none; white-space: nowrap; }
+.js .explore__item:not([data-active]) .explore__b { display: none; }
+
+/* --- Planner: tap-to-add project elements ---------------------------------- */
+.planner__picks { display: flex; flex-wrap: wrap; gap: .45rem; }
+.pick { display: inline-flex; align-items: center; gap: .4rem; padding: .5rem .85rem; border-radius: 999px; border: 1px solid var(--line); background: var(--bg); color: var(--ink-2); font-size: var(--t-small); cursor: pointer; }
+.pick::before { content: '+'; font-weight: 700; }
+.pick:hover { color: var(--ink); border-color: var(--ink-3); }
+.pick[aria-pressed="true"] { background: var(--btn-bg); color: var(--btn-fg); border-color: var(--btn-bg); }
+.pick[aria-pressed="true"]::before { content: '✓'; }
+
 /* --- Breadcrumbs ----------------------------------------------------------- */
 .crumbs ol { list-style: none; margin: 0 0 1.1rem; padding: 0; display: flex; flex-wrap: wrap; gap: .3rem .5rem; font-family: var(--font-label); font-size: var(--t-micro); letter-spacing: var(--tracking-label); text-transform: uppercase; }
 .crumbs li + li::before { content: '/'; margin-right: .5rem; opacity: .6; }

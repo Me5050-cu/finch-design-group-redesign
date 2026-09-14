@@ -225,9 +225,31 @@
     var out = document.getElementById('planner-out');
     var input = form.querySelector('#planner-input');
 
+    // Tap-to-add elements write one sentence into the description; anything the
+    // visitor typed themselves is kept.
+    var picks = [].slice.call(form.querySelectorAll('.pick'));
+    var generated = '';
+    var joinList = function (list) { return list.length < 2 ? list.join('') : list.slice(0, -1).join(', ') + ' and ' + list[list.length - 1]; };
+    var compose = function () {
+      var chosen = picks.filter(function (p) { return p.getAttribute('aria-pressed') === 'true'; }).map(function (p) { return p.getAttribute('data-phrase'); });
+      var own = input.value;
+      if (generated && own.indexOf(generated) !== -1) own = own.replace(generated, '');
+      own = own.trim();
+      generated = chosen.length ? 'We would like ' + joinList(chosen) + '.' : '';
+      input.value = own && generated ? own + ' ' + generated : own || generated;
+    };
+    picks.forEach(function (pick) {
+      pick.addEventListener('click', function () {
+        pick.setAttribute('aria-pressed', String(pick.getAttribute('aria-pressed') !== 'true'));
+        compose();
+      });
+    });
+
     form.querySelectorAll('[data-example]').forEach(function (chip) {
       // One tap on an example builds a plan straight away.
       chip.addEventListener('click', function () {
+        picks.forEach(function (p) { p.setAttribute('aria-pressed', 'false'); });
+        generated = '';
         input.value = chip.getAttribute('data-example');
         if (form.requestSubmit) form.requestSubmit(); else input.focus();
       });

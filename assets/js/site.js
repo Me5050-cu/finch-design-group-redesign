@@ -151,8 +151,60 @@
     });
   }
 
+  // Hero motion clip: honours reduced motion, can be paused, and falls back to
+  // the photo slideshow if the video cannot play.
+  function heroVideo() {
+    var hero = document.querySelector('[data-hero-video]');
+    if (!hero || hero.dataset.bound) return;
+    hero.dataset.bound = '1';
+    var video = hero.querySelector('.hero__video');
+    var btn = hero.querySelector('[data-motion-toggle]');
+    if (!video || !btn) return;
+    var label = function (playing) { btn.textContent = playing ? 'Pause motion' : 'Play motion'; };
+    var fallback = function () { video.remove(); btn.parentNode.remove(); hero.classList.remove('hero--video'); };
+    video.addEventListener('error', fallback);
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) { video.removeAttribute('autoplay'); video.pause(); label(false); }
+    else {
+      label(true);
+      var attempt = video.play();
+      if (attempt && attempt.catch) attempt.catch(function () { label(false); });
+    }
+    btn.addEventListener('click', function () {
+      if (video.paused) { var p = video.play(); if (p && p.catch) p.catch(function () {}); label(true); }
+      else { video.pause(); label(false); }
+    });
+  }
+
+  // "Explore a finished project": one open description, markers in sync.
+  function explore(root) {
+    root.querySelectorAll('[data-explore]').forEach(function (box) {
+      if (box.dataset.bound) return;
+      box.dataset.bound = '1';
+      var items = [].slice.call(box.querySelectorAll('.explore__item'));
+      var spots = [].slice.call(box.querySelectorAll('.spot'));
+      var show = function (i) {
+        items.forEach(function (it, n) {
+          var on = n === i;
+          if (on) it.setAttribute('data-active', ''); else it.removeAttribute('data-active');
+          it.querySelector('.explore__btn').setAttribute('aria-expanded', String(on));
+        });
+        spots.forEach(function (s, n) { s.setAttribute('aria-pressed', String(n === i)); });
+      };
+      box.addEventListener('click', function (ev) {
+        if (ev.target.closest('a')) return;
+        var t = ev.target.closest('.spot, .explore__btn');
+        if (t) show(Number(t.getAttribute('data-spot')));
+      });
+      show(0);
+    });
+  }
+
   function init(root) {
     root = root || document;
+    document.documentElement.classList.add('js');
+    heroVideo();
+    explore(root);
     var navState = document.getElementById('nav-state');
     root.querySelectorAll('.mobile-nav a').forEach(function (a) {
       a.addEventListener('click', function () { if (navState) navState.checked = false; });
