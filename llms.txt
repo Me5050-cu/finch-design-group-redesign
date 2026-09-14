@@ -1,0 +1,27 @@
+# Finch Design Group
+
+> Family-run landscape design-build firm in Georgetown, Texas, founded by lead designer Ted Finch in 2001. Landscape design, hardscape construction, licensed irrigation and certified Azenco Outdoor pergola and MagnaTrack screen installation for homes and communities across Greater Austin.
+
+- Phone: (512) 934-3891
+- Email: mckay@finchdg.com
+- Office: 26450 Ronald Reagan Blvd, Georgetown, TX 78633
+- Service area: Austin & surrounding areas
+
+## Pages
+
+- [Home](https://me5050-cu.github.io/finch-design-group-redesign/): Luxury landscape design, hardscape, licensed irrigation and certified Azenco pergolas in Georgetown and Greater Austin. Book a free on-site consultation.
+- [Design & Build](https://me5050-cu.github.io/finch-design-group-redesign/design-build.html): 2D and 3D landscape design, patios, outdoor kitchens, turf and licensed irrigation (LI-0030113) for homes and communities across Greater Austin.
+- [Pergolas & Screens](https://me5050-cu.github.io/finch-design-group-redesign/pergolas-screens.html): Certified Azenco Outdoor pergola and MagnaTrack screen dealer and installer. Motorized louvered roofs and screens designed into your Austin-area landscape.
+- [Projects](https://me5050-cu.github.io/finch-design-group-redesign/projects.html): Residential backyards, multifamily amenity courtyards, Azenco pergolas and design plans by Finch Design Group across Georgetown and Greater Austin.
+- [About](https://me5050-cu.github.io/finch-design-group-redesign/about.html): Founded by lead designer Ted Finch in 2001, Finch Design Group is a family-run landscape design-build firm in Georgetown, Texas. Meet the team.
+- [Start a project](https://me5050-cu.github.io/finch-design-group-redesign/contact.html): Request a free on-site landscape design consultation with Finch Design Group. Call (512) 934-3891 or tell us about your project online.
+
+## Facts
+
+- The first on-site consultation is free.
+- Residential design plans in the Austin area typically run $1,500–$5,000; Finch quotes its design fee after the consultation.
+- Installation projects start at $3,000.
+- Licensed irrigator LI-0030113.
+- A+ rated · BBB Accredited since 2019; 5.0 on Angi · 4 reviews.
+- Certified Azenco Outdoor dealer and installer (R-BLADE, R-WEAVE, R-SHADE, R-CAR, K-BANA, R-BREEZE) and certified MagnaTrack screen dealer and installer.
+- The home page AI project planner turns a visitor's description into a starting plan and sends it to the contact form.

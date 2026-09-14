@@ -1,0 +1,4 @@
+# Demo for Finch Design Group — not for indexing.
+# Every page also carries <meta name="robots" content="noindex, nofollow">.
+User-agent: *
+Disallow: /

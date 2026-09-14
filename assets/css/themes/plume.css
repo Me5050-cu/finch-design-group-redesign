@@ -1,0 +1,49 @@
+/* ============================================================
+   DIRECTION 01 · PLUME — on-brand. Finch navy and finch orange on white,
+   Montserrat headings (the typeface their current site already uses)
+   over Inter body text. Confident and clean; the orange is an accent,
+   never a text colour on white at full strength.
+   PALETTE ORIGIN — sampled from their real logo file (finch_social.png,
+   the og:image on finchdg.com), mean of opaque pixels per ink:
+     #E37C3B  the finch mark                  → --accent
+     #073450  the FINCH wordmark              → --band-bg, --btn-bg
+     #50859A  the DESIGN GROUP line           → not used (fails AA on white)
+   #B85A1C is the mark darkened until it clears AA as text on white (4.65:1).
+   ============================================================ */
+:root {
+  --bg: #ffffff; --bg-2: #f5f2ec; --bg-3: #e8e2d7;
+  --surface: #ffffff;
+  --ink: #0b2233; --ink-2: #3d5364; --ink-3: #5d7080;
+  --accent: #e37c3b; --accent-ink: #0b2233; --accent-text: #b85a1c;
+  --line: rgba(7,52,80,.14); --line-2: rgba(7,52,80,.07);
+  --focus: #e37c3b;
+
+  --band-bg: #073450; --band-fg: #f4f8fb; --band-fg-2: rgba(244,248,251,.74);
+  --band-rule: rgba(244,248,251,.16); --band-accent: #f29a5e;
+
+  --btn-bg: #073450; --btn-fg: #ffffff; --btn-bg-hover: #e37c3b; --btn-fg-hover: #0b2233;
+  --ghost-fg: #073450; --ghost-border: rgba(7,52,80,.25); --ghost-bg-hover: rgba(7,52,80,.06);
+  --btn-r: 6px;
+
+  --head-bg: rgba(255,255,255,.95); --head-fg: #0b2233; --head-rule: rgba(7,52,80,.1);
+
+  --hero-overlay: linear-gradient(90deg, rgba(4,26,41,.66) 0%, rgba(4,26,41,.28) 48%, rgba(4,26,41,0) 78%), linear-gradient(180deg, rgba(7,52,80,.2) 0%, rgba(4,26,41,.35) 45%, rgba(4,26,41,.82) 100%);
+
+  --font-display: 'Montserrat', system-ui, -apple-system, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-label: 'Montserrat', system-ui, -apple-system, sans-serif;
+  --weight-display: 700; --weight-strong: 600;
+  --tracking-display: -.015em; --tracking-label: .14em;
+
+  --radius: 8px; --radius-sm: 6px; --radius-img: 8px;
+  --shadow: 0 1px 2px rgba(7,52,80,.05), 0 8px 24px -14px rgba(7,52,80,.22);
+  --shadow-l: 0 2px 4px rgba(7,52,80,.05), 0 26px 50px -24px rgba(7,52,80,.35);
+}
+/* Overrides (3) */
+/* 1. Eyebrows carry the brand orange (AA-safe shade) instead of grey. */
+.eyebrow { color: var(--accent-text); }
+/* 2. Hero headline a touch heavier and tighter, like their current display type. */
+.hero h1 { font-weight: 700; letter-spacing: -.025em; }
+/* 3. Nav CTA in brand orange with navy ink (5.6:1). */
+.nav a.nav__cta { background: var(--accent); color: var(--ink); }
+.nav a.nav__cta:hover { background: var(--band-bg); color: #fff; }
