@@ -98,7 +98,9 @@
   function openAt(i) {
     index = (i + items.length) % items.length;
     var fig = items[index], src = fig.querySelector('img');
-    boxImg.src = src.currentSrc || src.src;
+    // Always open the full-size file, not the small copy a phone may have loaded.
+    var full = fig.querySelector('[data-full]');
+    boxImg.src = full ? full.getAttribute('data-full') : (src.currentSrc || src.src);
     boxImg.alt = src.alt;
     var cap = fig.querySelector('figcaption');
     boxCap.textContent = cap ? cap.textContent.replace(/\s+/g, ' ').trim() : src.alt;
