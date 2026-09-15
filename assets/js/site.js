@@ -200,11 +200,31 @@
     });
   }
 
+  // Project film: the poster is local; YouTube loads only when a visitor presses play.
+  function film(root) {
+    root.querySelectorAll('[data-film]').forEach(function (box) {
+      if (box.dataset.bound) return;
+      box.dataset.bound = '1';
+      var btn = box.querySelector('.film__play');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var frame = document.createElement('iframe');
+        frame.src = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(box.getAttribute('data-film')) + '?autoplay=1&rel=0&playsinline=1';
+        frame.title = 'Film: ' + (box.getAttribute('data-title') || 'project film');
+        frame.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+        frame.setAttribute('allowfullscreen', '');
+        box.replaceChildren(frame);
+        frame.focus();
+      });
+    });
+  }
+
   function init(root) {
     root = root || document;
     document.documentElement.classList.add('js');
     heroVideo();
     explore(root);
+    film(root);
     var navState = document.getElementById('nav-state');
     root.querySelectorAll('.mobile-nav a').forEach(function (a) {
       a.addEventListener('click', function () { if (navState) navState.checked = false; });

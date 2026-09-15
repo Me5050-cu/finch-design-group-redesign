@@ -40,10 +40,12 @@
   --shadow-l: 0 2px 4px rgba(7,52,80,.05), 0 26px 50px -24px rgba(7,52,80,.35);
 }
 /* Overrides (3) */
-/* 1. Eyebrows carry the brand orange (AA-safe shade) instead of grey. */
-.eyebrow { color: var(--accent-text); }
-/* 2. Hero headline a touch heavier and tighter, like their current display type. */
-.hero h1 { font-weight: 700; letter-spacing: -.025em; }
+/* 1. Eyebrows stay quiet: neutral text, orange only in the short rule, so the
+      brand orange is reserved for buttons and markers. */
+.eyebrow { color: var(--ink-3); }
+/* 2. Headlines a weight lighter and tighter — confident without shouting. */
+h1, h2 { font-weight: 600; }
+.hero h1 { font-weight: 600; letter-spacing: -.03em; }
 /* 3. Nav CTA in brand orange with navy ink (5.6:1). */
 .nav a.nav__cta { background: var(--accent); color: var(--ink); }
 .nav a.nav__cta:hover { background: var(--band-bg); color: #fff; }
